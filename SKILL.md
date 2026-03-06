@@ -1,7 +1,7 @@
 ---
 name: viral-writer
 description: >
-  Write viral, human-sounding long-form content for social platforms (X/Twitter threads, 公众号, LinkedIn, newsletters).
+  Write viral, human-sounding long-form content for social platforms (X long posts/threads, 公众号, LinkedIn, 小红书, 抖音文案, newsletters).
   Use when asked to: write a thread, draft a post, create content for social media, write with "human voice",
   去AI味写作, 写推文/长文/帖子, build personal brand content, or any content creation task targeting engagement and virality.
   Supports Chinese and English. Includes craft-driven writing, hook design, framework selection, and platform formatting.
@@ -183,7 +183,7 @@ Clarify before writing. Extract or ask:
     1. 用户显式指定（"写一篇银发线的..."）→ 直接采用
     2. Mode B 从 raw 素材自动判断 → 在 EXTRACT 输出中标注，用户确认
     3. 不确定时 → 询问用户
-- **Platform (主平台)**: X thread / 公众号 / LinkedIn / Newsletter / 小红书 / 抖音文案?
+- **Platform (主平台)**: X 长文 / X Thread / 公众号 / LinkedIn / Newsletter / 小红书 / 抖音文案?
 - **Platform (副平台, 可选)**: 同一内容需要适配的其他平台（可多选）。副平台版本在主平台完成后生成。
 - **Audience**: Who reads this? (demographics, pain points)
 - **Voice**: 根据 Content Line 自动加载对应 Preset（见 `references/voice.md` → Content Line Presets）。如果该线的 Preset 尚未填充，退回到 Quick Start 3 问建立临时 Voice Profile。`custom` 线始终走 Quick Start 或用户已有 Profile。
@@ -278,7 +278,8 @@ Apply platform-specific rules. See `references/platforms.md`.
 
 **Quick reference:**
 
-- **X Thread**: ≤280 chars/tweet, 8-12 tweets optimal, number them (1/10), no markdown tables
+- **X 长文**: 1000-3000 字, 富文本排版, Hook 标题 + 封面图, 深度内容首选
+- **X Thread**: 5-10 条 ≤280 字符, 清单/tips/快速观点场景
 - **公众号**: ~2000 chars, scene-setting opener, quotable golden lines, emoji headers
 - **LinkedIn**: Professional tone, paragraph breaks, 1-3 hashtags at end
 - **Discord/WhatsApp**: No markdown tables, use bullet lists, wrap links in `<>`
@@ -480,12 +481,12 @@ ai-frontier | ... | ... | ... | ... | ...
 
 复盘发现的规律 → 建议更新到对应方法论文件：
 
-| 发现类型 | 目标文件 | 更新内容 |
-|---------|---------|---------|
-| 高表现标题的公式 | `方法论/标题方法论.md` | 追加验证数据、调整公式排序 |
+| 发现类型           | 目标文件               | 更新内容                     |
+| ------------------ | ---------------------- | ---------------------------- |
+| 高表现标题的公式   | `方法论/标题方法论.md` | 追加验证数据、调整公式排序   |
 | 高表现 Hook 的类型 | `方法论/开头方法论.md` | 追加成功案例、标注最佳内容线 |
-| 高表现选题的特征 | `方法论/选题方法论.md` | 更新选题评估权重 |
-| Voice Preset 迭代 | `references/voice.md` | 根据数据微调各线 Preset |
+| 高表现选题的特征   | `方法论/选题方法论.md` | 更新选题评估权重             |
+| Voice Preset 迭代  | `references/voice.md`  | 根据数据微调各线 Preset      |
 
 **执行方式**: 列出具体更新建议 → 用户确认 → 执行写入。不自动更新方法论文件。
 

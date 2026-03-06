@@ -1,16 +1,36 @@
 # Platform Formatting Guide
 
-## X / Twitter Thread
+## X (Twitter)
 
-- **Length**: 8-12 tweets optimal (47% better engagement than shorter)
-- **Per tweet**: ≤280 characters
+X 支持两种长内容格式，根据内容长度和目的选择：
+
+### X 长文（Articles）— 首选
+
+适合深度内容、完整观点输出，平台原生支持富文本排版。
+
+- **长度**: 1000-3000 字为佳，上限无硬性限制
+- **结构**: Hook 标题 → 正文（支持小标题、粗体、斜体、列表、引用块）→ CTA
+- **标题**: 直接显示在时间线卡片上，等同于 Hook，决定点击率
+- **排版**: 利用平台富文本：小标题分段、粗体强调、引用块突出金句
+- **配图**: 封面图必备（显示在卡片中），正文内可插入配图
+- **CTA**: 文末引导关注 / 转发 / 讨论
+- **优势**: 完整内容在一个页面内，不会被 thread 断裂感打断；SEO 友好；可被外部链接引用
+
+### X Thread — 短观点/列表型内容
+
+适合碎片化观点、清单类内容、快速互动。
+
+- **长度**: 5-10 条推文，每条 ≤280 字符
 - **Numbering**: Use "1/10" format for completion motivation
-- **Visuals**: Insert image/screenshot every 3-4 tweets
 - **First tweet**: Hook only. No context, no intro, just the hook
 - **Last tweet**: CTA — "Follow for more" / "RT if useful" / question
+- **Format**: No markdown tables. Use line breaks and emoji bullets
+
+### 通用规则
+
 - **Timing**: Tue/Wed 8-10 AM or 7-9 PM EST; 中国受众: 晚8-10点 CST
 - **Post-publish**: Reply to every comment in first 30 min (algorithm reward)
-- **Format**: No markdown tables. Use line breaks and emoji bullets
+- **选择依据**: 完整文章/深度分析 → 长文；清单/tips/快速观点 → Thread
 
 ## 公众号 (WeChat Official Account)
 
@@ -88,7 +108,7 @@
 ## Cross-Platform Distribution Strategy
 
 ```
-Original → X Thread (test engagement)
+Original → X 长文/Thread (test engagement)
    ↓
 High engagement? → Expand to 公众号 (deeper version)
    ↓
