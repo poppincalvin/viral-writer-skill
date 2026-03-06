@@ -45,19 +45,112 @@ This skill is integrated with a personal writing system at `~/Documents/write-in
 - **Before writing about a niche**: Check `对标研究/` for any existing competitive analyses
 - **After DELIVER**: Save to `已发布/` and update methodology files (see Post-Delivery below)
 
+## Entry Modes
+
+This skill has two entry modes. Detect automatically from user input.
+
+### Mode A: 生成模式（Topic → Article）
+
+User provides a topic or asks to write about something. Run the full pipeline.
+
+```
+DISCOVER → BRIEF → FRAMEWORK → HOOK → DRAFT(+Craft) → FORMAT → REVIEW ⇄ DELIVER → POST-DELIVERY
+```
+
+### Mode B: 润色模式（Raw Material → Polished Article）
+
+User provides raw text (unstructured notes, messy draft, stream-of-consciousness). Polish it into publishable content.
+
+```
+EXTRACT → BRIEF → FRAMEWORK → HOOK → REWRITE(+Craft) → FORMAT → REVIEW ⇄ DELIVER → POST-DELIVERY
+```
+
+**How to detect Mode B:** User pastes a block of text, says "帮我润色/整理/改一下", or provides notes/draft material.
+
+**Core principle: 保留原作者的观点、事实、个人经历。只重组结构和打磨表达。**
+
+#### Step 0B: EXTRACT（提炼）
+
+Read the raw material and extract:
+
+1. **核心观点**: What is the author actually trying to say? (often buried in the middle or end)
+2. **关键论据**: Facts, data, personal stories, examples — preserve ALL of these
+3. **情感基调**: Is the author angry? reflective? excited? — match and amplify, don't flatten
+4. **素材评估**:
+   - 有什么：列出可用的好素材（个人经历、数据、金句种子）
+   - 缺什么：哪些论点缺支撑？哪里需要补充案例或数据？
+   - 多什么：哪些内容重复或离题？建议删除
+
+**Output to user for confirmation:**
+
+```
+EXTRACT | 素材分析
+─────────────────────
+核心观点: {一句话概括}
+情感基调: {基调}
+
+可用素材:
+- {素材1}: {为什么好}
+- {素材2}: {为什么好}
+...
+
+建议补充:
+- {缺口1}: {为什么需要}
+...
+
+建议删除:
+- {冗余1}: {为什么多余}
+...
+
+结构建议: {推荐框架} + {理由}
+内容线: {自动判断属于哪条线}
+
+确认后进入 BRIEF →
+```
+
+**User confirms or adjusts** → proceed to BRIEF (extract from material, not Q&A).
+
+In Mode B, BRIEF is inferred from the material:
+
+- **Topic**: Extracted from core message
+- **Platform**: Ask if not obvious
+- **Audience**: Infer from content, confirm with user
+- **Voice**: Preserve author's natural voice from the raw material, enhance it
+- **Goal**: Ask if not obvious
+
+Then continue through FRAMEWORK → HOOK → REWRITE → FORMAT → REVIEW → DELIVER as normal.
+
+#### REWRITE vs DRAFT
+
+In Mode B, Step 4 is REWRITE, not DRAFT. The difference:
+
+|         | DRAFT (Mode A)                  | REWRITE (Mode B)                                                      |
+| ------- | ------------------------------- | --------------------------------------------------------------------- |
+| Source  | Framework template + topic      | User's raw material                                                   |
+| Freedom | Full creative freedom           | Bound to author's facts and opinions                                  |
+| Voice   | From Voice Profile              | Extracted from raw material + enhanced                                |
+| Craft   | Apply 6 principles from scratch | Apply 6 principles to restructure existing content                    |
+| Can add | Anything that fits              | Only add what's missing (per EXTRACT assessment)                      |
+| Cannot  | —                               | Invent facts, change opinions, add experiences the author didn't have |
+
+**REWRITE 的 Craft 应用顺序:**
+
+1. **认知落差**: 从 raw 素材中找到最强的认知转变，把它放大
+2. **具体→普遍跳跃**: 作者的个人细节已经有了（raw素材的优势），补上"起飞"部分
+3. **广度**: 确保开头能让圈外人进入
+4. **密度**: 大刀砍冗余——raw素材通常最大的问题就是不够压缩
+5. **节奏**: 重组句子长短，制造呼吸感
+6. **金句**: 从作者的原话中提炼，或基于作者的洞察锻造
+
 ## Core Workflow
 
-```
-0. DISCOVER → 1. BRIEF → 2. FRAMEWORK → 3. HOOK → 4. DRAFT(+Craft) → 5. FORMAT → 6. REVIEW ⇄ 7. DELIVER → POST-DELIVERY
-                                                        ↑                          ↓
-                                                    (core step)          (loop back if score < 64)
-```
+> Below are the shared steps. Mode A starts at Step 0 (Discover). Mode B starts at Step 0B (Extract, defined above) then joins at Step 1 (Brief).
 
-### Step 0: Discover
+### Step 0: Discover (Mode A only)
 
 Find the right topic before you write. See `references/discovery.md` for the full methodology.
 
-**Two entry modes:**
+**Two sub-modes:**
 
 - **No topic yet** → Run the full discovery pipeline: multi-source scan → trend staging → angle gap analysis → fit scoring → Top 3 recommendations
 - **User has a topic** → Skip scanning, run trend check + angle gap + fit assessment only, then move to Brief
@@ -81,9 +174,19 @@ After user picks a topic (or confirms their own), proceed to Brief.
 Clarify before writing. Extract or ask:
 
 - **Topic**: What's the core message?
-- **Platform**: X thread / 公众号 / LinkedIn / Newsletter / 小红书?
+- **Content Line**: Which content line does this belong to? See `references/voice.md` → Content Line Presets.
+  - `ai-vertical` — AI + 垂直领域分享（专业可读、案例驱动）
+  - `silver` — 银发经济/中老年（简洁温暖、实用为主）
+  - `ai-frontier` — 前沿 AI 洞悉（快速、深度、高信息密度）
+  - `custom` — 不属于以上三条线，使用通用 Voice Profile
+  - **判断方式**（按优先级）:
+    1. 用户显式指定（"写一篇银发线的..."）→ 直接采用
+    2. Mode B 从 raw 素材自动判断 → 在 EXTRACT 输出中标注，用户确认
+    3. 不确定时 → 询问用户
+- **Platform (主平台)**: X thread / 公众号 / LinkedIn / Newsletter / 小红书 / 抖音文案?
+- **Platform (副平台, 可选)**: 同一内容需要适配的其他平台（可多选）。副平台版本在主平台完成后生成。
 - **Audience**: Who reads this? (demographics, pain points)
-- **Voice**: Author's voice profile — see `references/voice.md`. If no profile exists, ask the 3 Quick Start questions to build one.
+- **Voice**: 根据 Content Line 自动加载对应 Preset（见 `references/voice.md` → Content Line Presets）。如果该线的 Preset 尚未填充，退回到 Quick Start 3 问建立临时 Voice Profile。`custom` 线始终走 Quick Start 或用户已有 Profile。
 - **Goal**: Engagement? Authority? Conversion? Community?
 - **Language**: 中文 / English / bilingual
 
@@ -118,11 +221,12 @@ Also read the local methodology files for validated formulas with performance da
 
 **Hook test:** Read it aloud. Would you stop scrolling? Would a friend want to hear more?
 
-### Step 4: Draft — The Core Step
+### Step 4: Draft / Rewrite — The Core Step
 
 This is where the real work happens. Everything before this is preparation. Everything after is polish.
 
-Write the full draft using the selected framework template from `references/frameworks.md`.
+- **Mode A (生成)**: Write the full draft using the selected framework template from `references/frameworks.md`.
+- **Mode B (润色)**: Restructure the user's raw material into the selected framework. See "REWRITE vs DRAFT" table above for boundaries.
 
 **The 6 Craft Principles are non-negotiable. See `references/craft.md` for full methodology.**
 
@@ -179,6 +283,18 @@ Apply platform-specific rules. See `references/platforms.md`.
 - **LinkedIn**: Professional tone, paragraph breaks, 1-3 hashtags at end
 - **Discord/WhatsApp**: No markdown tables, use bullet lists, wrap links in `<>`
 - **小红书**: Visual-first, emoji-heavy, shorter paragraphs, relatable tone
+- **抖音文案**: 口语化短句, 3秒 Hook, 节奏标记 `[停顿]` `[画面切换]`, 60-90秒时长
+
+**多平台分发流程（如果 BRIEF 中有副平台）:**
+
+1. **先完成主平台版本** — 走完 FORMAT → REVIEW → DELIVER 全流程
+2. **再生成副平台适配版本** — 基于主平台终稿，按目标平台规范调整：
+   - 长度裁剪/扩展（公众号→X 需大幅压缩，X→公众号需扩展深度）
+   - 语气微调（参考 `references/voice.md` → Adapting Voice Across Platforms 矩阵）
+   - 格式转换（标题、排版、CTA 按平台惯例调整）
+   - 内容线的 Voice Preset 不变，只调平台语气强度
+3. **副平台版本不需要完整 REVIEW** — 做快速 Platform Fit 检查（≥7/10 即可）
+4. **所有版本一起 DELIVER** — 主平台标注 `[主]`，副平台标注 `[副:平台名]`
 
 ### Step 6: Review
 
@@ -270,18 +386,39 @@ Create file at `~/Documents/write-infinite/已发布/{YYYY-MM-DD}-{标题简称}
 
 ## 元数据
 - 发布日期: {date}
-- 发布平台: {platform}
+- 内容线: {ai-vertical / silver / ai-frontier / custom}
+- 主平台: {platform}
+- 副平台: {platform list, if any}
 - 选题来源: {how the topic was found}
 - 使用框架: {which framework}
 - Review 分数: {final score}/80
 
+## Hook 选择记录
+- 候选 Hook (5个):
+  1. {hook text} — 公式: {formula} — 内部评分: {N}/10
+  2. {hook text} — 公式: {formula} — 内部评分: {N}/10
+  3. {hook text} — 公式: {formula} — 内部评分: {N}/10
+  4. {hook text} — 公式: {formula} — 内部评分: {N}/10
+  5. {hook text} — 公式: {formula} — 内部评分: {N}/10
+- 最终选择: #{N} — 选择理由: {why this one}
+
 ## 写作决策记录
-- Hook 选择: {which formula, why}
 - 认知落差设计: {from what → to what}
 - 金句: "{the golden line that made it to final}"
 - 关键取舍: {what was cut, what was kept, and why}
+- Craft 维度 Review 得分:
+  - Hook: {N}/10 | Gap: {N}/10 | Density: {N}/10 | Craft: {N}/10
+  - Breadth: {N}/10 | Voice: {N}/10 | Share: {N}/10 | Platform: {N}/10
 
 ## 数据表现 (发布后更新)
+
+### {主平台}
+- 阅读/曝光:
+- 点赞:
+- 评论:
+- 转发/分享:
+
+### {副平台1} (if applicable)
 - 阅读/曝光:
 - 点赞:
 - 评论:
@@ -291,6 +428,7 @@ Create file at `~/Documents/write-infinite/已发布/{YYYY-MM-DD}-{标题简称}
 - 表现 vs 预期:
 - 什么 worked:
 - 什么 didn't:
+- Hook 回溯: 选的 Hook 表现如何？评分最高的那个是否真的更好？
 - 下次可复用的 pattern:
 ```
 
@@ -304,13 +442,52 @@ If the content performs well (or fails notably), update:
 - `方法论/开头方法论.md` — add opening hook performance data
 - `方法论/选题方法论.md` — add topic evaluation + actual performance
 
-**3. Trigger methodology review**
+**3. Every-5 Retrospective (数据驱动复盘)**
 
-When `已发布/` accumulates 5+ entries, suggest running a retrospective:
+When `已发布/` accumulates每 5 篇新增（5, 10, 15...），触发一次完整复盘：
 
-- Compare scores vs actual performance — is the Review scoring calibrated?
-- Find patterns in top performers — what craft principles correlated with success?
-- Update methodology files with new validated rules
+#### 3a. 分线 ROI 对比
+
+按内容线分组统计：
+
+```
+{内容线} | 篇数 | 平均阅读 | 平均互动率 | 最佳表现 | 最差表现
+---------|------|----------|-----------|---------|--------
+ai-vertical | ... | ... | ... | ... | ...
+silver      | ... | ... | ... | ... | ...
+ai-frontier | ... | ... | ... | ... | ...
+```
+
+输出建议：哪条线继续加码 / 需要调整方向 / 可以暂停。如果用户记录了写作时间，计算时间投入 vs 产出比。
+
+#### 3b. Hook A/B 回溯
+
+从所有存档中提取 Hook 选择记录：
+
+- 统计：选了内部评分最高 Hook 的文章 vs 选了非最高分 Hook 的文章，实际表现对比
+- 按 Hook 公式分类统计：哪种公式在哪条内容线效果最好？
+- 输出：Hook 评分系统是否准确？哪些公式值得优先使用？
+
+#### 3c. Craft 原则关联分析
+
+从所有存档中提取 Review 8 维度得分 vs 实际数据表现：
+
+- 计算每个维度得分与实际阅读/互动的相关性
+- 找出：哪个维度的高分最能预测实际表现？
+- 如果发现某维度得分与实际表现不相关（如 Shareability 高分但转发量低），建议调整 Review 评分权重
+
+#### 3d. 方法论自动更新建议
+
+复盘发现的规律 → 建议更新到对应方法论文件：
+
+| 发现类型 | 目标文件 | 更新内容 |
+|---------|---------|---------|
+| 高表现标题的公式 | `方法论/标题方法论.md` | 追加验证数据、调整公式排序 |
+| 高表现 Hook 的类型 | `方法论/开头方法论.md` | 追加成功案例、标注最佳内容线 |
+| 高表现选题的特征 | `方法论/选题方法论.md` | 更新选题评估权重 |
+| Voice Preset 迭代 | `references/voice.md` | 根据数据微调各线 Preset |
+
+**执行方式**: 列出具体更新建议 → 用户确认 → 执行写入。不自动更新方法论文件。
 
 ### Competitive Analysis (On-Demand)
 

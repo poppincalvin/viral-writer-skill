@@ -117,6 +117,54 @@ The key: a reader who follows you on X and subscribes to your newsletter should 
 
 ---
 
+## Content Line Presets
+
+三条公众号内容线，每条有独立的 Voice Profile。写作时根据内容线自动加载对应 Preset。
+
+### `ai-vertical` — AI + 垂直领域分享
+
+**目标人群**: 科技/职场人群
+**风格方向**: 专业可读、案例驱动
+
+| 维度 | 设定 |
+|------|------|
+| Identity | _待填充：用户提供风格描述 + 对标账号后补全_ |
+| Tone Spectrum | _待填充_ |
+| Signature Moves | _待填充_ |
+| Vocabulary DNA | _待填充_ |
+| Reader Relationship | _待填充_ |
+
+### `silver` — 银发经济/中老年
+
+**目标人群**: 中老年群体
+**风格方向**: 简洁温暖、实用为主
+
+| 维度 | 设定 |
+|------|------|
+| Identity | _待填充：用户提供风格描述 + 对标账号后补全_ |
+| Tone Spectrum | _待填充_ |
+| Signature Moves | _待填充_ |
+| Vocabulary DNA | _待填充_ |
+| Reader Relationship | _待填充_ |
+
+### `ai-frontier` — 前沿 AI 洞悉
+
+**目标人群**: AI 从业者/爱好者
+**风格方向**: 快速、深度、高信息密度
+
+| 维度 | 设定 |
+|------|------|
+| Identity | _待填充：用户提供风格描述 + 对标账号后补全_ |
+| Tone Spectrum | _待填充_ |
+| Signature Moves | _待填充_ |
+| Vocabulary DNA | _待填充_ |
+| Reader Relationship | _待填充_ |
+
+> **填充方式**: 用户在对话中描述风格偏好或提供对标账号 → 运行对标分析 → 提炼 Voice Profile → 回填此处。
+> 每条线独立维护，可随数据反馈迭代。
+
+---
+
 ## Quick Start
 
 If the user hasn't defined their voice yet, ask these 3 questions:

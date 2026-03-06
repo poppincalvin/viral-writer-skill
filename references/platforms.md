@@ -58,6 +58,33 @@
 - **Length**: 500-1500 words for weekly; 200-500 for daily
 - **P.S.**: Always add a P.S. line — highest-read section after subject line
 
+## 抖音 (Douyin) — 文案脚本
+
+> 暂只支持文案脚本输出，视频生成不在 skill 范围内。
+
+- **类型**: 口播脚本 / 图文脚本 / 混剪文案
+- **时长**: 60-90秒最优（对应 200-300 字口播文案）
+- **结构**: 3秒 Hook → 痛点/冲突 → 核心内容 → CTA
+- **Hook**: 前3秒决定划走率，必须直击痛点或制造悬念
+- **语言**: 口语化，短句为主，适合朗读；避免书面语和长从句
+- **节奏标记**: 用 `[停顿]` `[重音]` `[画面切换]` 标注节奏点
+- **字幕友好**: 每句控制在 15 字以内，方便字幕显示
+- **CTA**: "关注我" / "评论区告诉我" / "点赞收藏下次找得到"
+
+**口播脚本模板:**
+
+```
+[Hook — 3秒]
+{一句话制造悬念或抛出痛点}
+
+[正文 — 50-70秒]
+{分2-3个段落，每段一个核心点}
+{每段之间用 [停顿] 或 [画面切换] 分隔}
+
+[结尾 — 5-10秒]
+{总结一句话 + CTA}
+```
+
 ## Cross-Platform Distribution Strategy
 
 ```
@@ -68,6 +95,8 @@ High engagement? → Expand to 公众号 (deeper version)
 Professional angle? → Adapt for LinkedIn
    ↓
 Visual angle? → Adapt for 小红书
+   ↓
+Short video angle? → 抖音文案脚本
    ↓
 Best performers → Compile into Newsletter
 ```
